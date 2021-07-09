@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+    Layout = null;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<hr />
+<button class="btn btn-outline-success btn-block" id="trocarIndex" onclick="TrocarIndex()">Trocar o conteudo</button>
+<script>
+    function TrocarIndex() {
+        $.ajax({
+            url: "/Home/Index",
+            success: function (result) {
+                var response = $($.parseHTML(result)).filter("#divContainer")
+                $("#main").html(response);
+            }
+        })
+    }
+</script>
