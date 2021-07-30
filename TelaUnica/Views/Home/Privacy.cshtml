@@ -3,12 +3,17 @@
     Layout = null;
 }
 <h1>@ViewData["Title"]</h1>
+<h2 class="display-3 text-danger text-center" id="temporizador"></h2>
 
 <p>Use this page to detail your site's privacy policy.</p>
 <hr />
 <button class="btn btn-outline-success btn-block" id="trocarIndex" onclick="TrocarIndex()">Trocar o conteudo</button>
 <script>
+    $("#temporizador").text(countMaximo); //Seta o valor maximo do tempo na tela;
+    Temporizador(); //Inicia o temporizador;
+
     function TrocarIndex() {
+        ResetarTemporizador(); //Reseta o temporizador;
         $.ajax({
             url: "/Home/Index",
             success: function (result) {

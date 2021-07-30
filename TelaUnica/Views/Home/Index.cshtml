@@ -1,9 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+    <h2 class="display-3 text-danger text-center" id="temporizador"></h2>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <hr />
@@ -16,7 +16,12 @@
     </div>
 </div>
 <script>
+    window.onload = () => {
+        $("#temporizador").text(countMaximo); //Exibe na tela o valor máximo do temporizador;
+        Temporizador(); //Inicia o temporizador;
+    }
     function TrocarPrivacy() {
+        ResetarTemporizador(); //Reseta o temporizador;
         $.ajax({
             url: "/Home/Privacy",
             success: function (result) {
